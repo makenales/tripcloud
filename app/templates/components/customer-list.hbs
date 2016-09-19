@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+  {{select-2 content=managers value=searchText optionValuePath="id" allowClear=true placeholder="Select Manager"}}
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="panel panel-default">
+  <div class="panel-body">
+  Sort by
+  {{radio-button value='customerSince' groupValue=sortBy}} customerSince
+  {{radio-button value='revenueGenerated' groupValue=sortBy}} revenueGenerated<br/>
+  {{input type='checkbox' checked=reverseSort}} Reverse sort
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    Minimum Revenue {{input type='text' value=minRevenue}}
+    Maximum Revenue {{input type='text' value=maxRevenue}}
+  </div>
+</div>
+<div class="clearfix"></div>
+<table class="table table-hover  table-bordered">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Account</th>
+      <th>Customer Since</th>
+      <th>Revenue Generated</th>
+      <th>Relationship Manager</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each sortedCustomers as |customer|}}
+    <tr>
+      <td>{{customer.firstName}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.account}}</td>
+      <td>{{formatDate customer.customerSince}}</td>
+      <td>{{customer.revenueGenerated}}</td>
+      <td>{{customer.relationshipManager}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+
