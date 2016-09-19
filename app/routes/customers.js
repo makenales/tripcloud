@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return Ember.$.getJSON('https://www.mychoice.co.in/crm-sample.json').then(function(json) {
+    return Ember.$.getJSON('crm-sample.json').then(function(json) {
 		var customers = json;
 		var unique = [];
 		var managers = [];
